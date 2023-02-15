@@ -4,19 +4,11 @@ import Grid from '@mui/material/Grid';
 import CustomCard from '../../components/CustomCard';
 import EscapeFromTarkov from '../../assets/eft-card.jpg';
 
-function Home() {
+export default function Home() {
   const GamesCards = React.useMemo(
     () => [
       {
         key: 0,
-        title: 'Escape From Tarkov',
-        img: EscapeFromTarkov,
-        description: 'Some 3D maps from EFT',
-        descriptionFooter: 'Credits by maps models RE3MR',
-        disabled: false,
-      },
-      {
-        key: 1,
         title: 'Escape From Tarkov',
         img: EscapeFromTarkov,
         description: 'Some 3D maps from EFT',
@@ -38,15 +30,15 @@ function Home() {
             <CustomCard
               title={game.title}
               description={game.description}
-              descriptionFooter={game.descriptionFooter}
+              // descriptionFooter={game.descriptionFooter}
               img={game.img}
               disabled={game.disabled}
+              // onClick={() => console.log('clicado')}
+              toPath="/GameMap"
             />
           </Grid>
         ))}
-        ;
       </Grid>
     </StyledContainer>
   );
 }
-export default Home;

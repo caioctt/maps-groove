@@ -1,4 +1,5 @@
 import { Card, CardActionArea, CardContent, CardMedia, styled, Typography } from '@mui/material';
+import { Link, LinkProps } from 'react-router-dom';
 
 type CustomCardProps = {
   title: string;
@@ -7,6 +8,7 @@ type CustomCardProps = {
   descriptionFooter?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  toPath?: LinkProps['to'];
 };
 
 const StyledCard = styled(Card)({
@@ -21,17 +23,22 @@ const StyledCardMedia = styled(CardMedia)({
   height: 150,
 });
 
-function CustomCard({
+export default function CustomCard({
   title,
   img,
   description,
   descriptionFooter,
   disabled,
   onClick,
+  toPath,
 }: CustomCardProps) {
   return (
     <StyledCard>
-      <CardActionArea disabled={disabled} onClick={onClick}>
+      <CardActionArea
+        {...(toPath === undefined
+          ? { ...{ disabled, onClick } }
+          : { ...{ disabled, component: Link, to: toPath } })}
+      >
         <StyledCardMedia image={img} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -41,7 +48,7 @@ function CustomCard({
             {description}
           </Typography>
           <br />
-          <Typography variant="body2" color="text.secondary" component="p">
+          <Typography variant="body2" color="text.secondary" component="span">
             {descriptionFooter}
           </Typography>
         </CardContent>
@@ -49,4 +56,3 @@ function CustomCard({
     </StyledCard>
   );
 }
-export default CustomCard;
