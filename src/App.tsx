@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './features/Home';
 import NotFound from './pages/NotFound';
-import NavBar from './components/Navbar';
 import GameMap from './features/GameMap';
+import ResponsiveAppBar from './components/Appbar';
 
 export default function App() {
   return (
     <>
-      <NavBar />
+      <ResponsiveAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/GameMap" element={<GameMap />} />

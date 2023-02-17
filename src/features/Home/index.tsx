@@ -12,7 +12,7 @@ export default function Home() {
         title: 'Escape From Tarkov',
         img: EscapeFromTarkov,
         description: 'Some 3D maps from EFT',
-        descriptionFooter: 'Credits by maps models RE3MR',
+        descriptionFooter: 'Credits by 3d maps models: RE3MR',
         disabled: false,
       },
     ],

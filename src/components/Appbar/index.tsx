@@ -3,46 +3,49 @@
 import React from 'react';
 import {
   AppBar,
-  Avatar,
   Box,
   Button,
   Container,
   IconButton,
   Menu,
   MenuItem,
+  Switch,
   Toolbar,
   Tooltip,
   Typography,
 } from '@mui/material';
 import PinIcon from '@mui/icons-material/PinDrop';
 import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { useMuiThemeProvider } from '../../styles/components/MuiThemeProvider';
 
 const pages = ['About'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const { toggleTheme } = useMuiThemeProvider();
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      style={{
+        // Cor para buttons: #00c0c4,
+        background: 'linear-gradient(to bottom, #1f2c67, #030303)',
+        opacity: '0.95',
+      }}
+    >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters variant="dense">
           <PinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -130,33 +133,14 @@ export default function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User" />
-              </IconButton>
+            <Tooltip title="Change theme">
+              <Switch
+                sx={{ m: 0 }}
+                onChange={toggleTheme}
+                icon={<LightModeIcon sx={{ m: 0 }} />}
+                checkedIcon={<DarkModeIcon sx={{ m: 0 }} />}
+              />
             </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>

@@ -11,13 +11,13 @@ type CustomCardProps = {
   toPath?: LinkProps['to'];
 };
 
-const StyledCard = styled(Card)({
-  backgroundColor: 'aliceblue',
-  color: 'darkslategray',
+const StyledCard = styled(Card)(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
+  color: theme.palette.primary.dark,
   padding: '0rem',
   textAlign: 'center',
   maxWidth: 300,
-});
+}));
 
 const StyledCardMedia = styled(CardMedia)({
   height: 150,
