@@ -1,5 +1,3 @@
-// import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
 import React from 'react';
 import {
   AppBar,
@@ -9,16 +7,35 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Switch,
   Toolbar,
-  Tooltip,
   Typography,
 } from '@mui/material';
+import styled from '@mui/styled-engine';
+
 import PinIcon from '@mui/icons-material/PinDrop';
 import MenuIcon from '@mui/icons-material/Menu';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import { useMuiThemeProvider } from '../../styles/components/MuiThemeProvider';
+
+import { Link } from 'react-router-dom';
+import ThemeSwitcher from './components/ThemeSwitcher';
+
+const StyledAppBar = styled(AppBar)({
+  background: 'linear-gradient(to bottom, #1f2c67, #030303)',
+  opacity: '0.95',
+  minHeight: '20px',
+  display: 'flex',
+});
+
+const StyledContainer = styled(Container)({
+  height: '35px',
+  minHeight: '35px',
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const StyledToolbar = styled(Toolbar)({
+  height: '35px',
+  minHeight: '20px',
+});
 
 const pages = ['About'];
 
@@ -33,39 +50,36 @@ export default function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const { toggleTheme } = useMuiThemeProvider();
-
   return (
-    <AppBar
-      position="static"
-      style={{
-        // Cor para buttons: #00c0c4,
-        background: 'linear-gradient(to bottom, #1f2c67, #030303)',
-        opacity: '0.95',
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters variant="dense">
-          <PinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+    <StyledAppBar position="static">
+      <StyledContainer maxWidth="xl">
+        <StyledToolbar disableGutters>
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              alignItems="center"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 900,
+                letterSpacing: '.15rem',
+                textDecoration: 'none',
+              }}
+            >
+              <PinIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              GROOVEMAPS
+            </Typography>
+          </Link>
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
+              height: '25px',
+              minHeight: '20px',
             }}
           >
-            GROOVEMAPS
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -105,20 +119,20 @@ export default function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
+              fontWeight: 900,
               letterSpacing: '.3rem',
-              color: 'inherit',
               textDecoration: 'none',
+              color: 'inherit',
             }}
           >
-            GROOVEMAPS
+            <Link style={{ textDecoration: 'none', color: 'inherit' }} to="/">
+              GROOVEMAPS
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -131,19 +145,9 @@ export default function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Change theme">
-              <Switch
-                sx={{ m: 0 }}
-                onChange={toggleTheme}
-                icon={<LightModeIcon sx={{ m: 0 }} />}
-                checkedIcon={<DarkModeIcon sx={{ m: 0 }} />}
-              />
-            </Tooltip>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          <ThemeSwitcher />
+        </StyledToolbar>
+      </StyledContainer>
+    </StyledAppBar>
   );
 }

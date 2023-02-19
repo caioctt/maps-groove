@@ -16,7 +16,7 @@ export default function Home() {
         disabled: false,
       },
     ],
-    [],
+    []
   );
   const StyledContainer = styled(Container)({
     paddingTop: 0,
@@ -34,7 +34,7 @@ export default function Home() {
               img={game.img}
               disabled={game.disabled}
               // onClick={() => console.log('clicado')}
-              toPath="/GameMap"
+              toPath="/GameMaps"
             />
           </Grid>
         ))}
