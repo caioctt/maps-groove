@@ -1,5 +1,4 @@
 import { Card, CardActionArea, CardContent, CardMedia, styled, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { Link, LinkProps } from 'react-router-dom';
 
 type CustomCardProps = {
@@ -10,12 +9,12 @@ type CustomCardProps = {
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   toPath?: LinkProps['to'];
+  api?: string;
 };
 
 const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   color: theme.palette.primary.dark,
-  padding: '0rem',
   textAlign: 'center',
   maxWidth: 300,
 }));
@@ -33,7 +32,6 @@ export default function CustomCard({
   onClick,
   toPath,
 }: CustomCardProps) {
-  const theme = useTheme();
   return (
     <StyledCard>
       <CardActionArea
@@ -44,7 +42,7 @@ export default function CustomCard({
         <StyledCardMedia image={img} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {theme.palette.mode}
+            {title}
           </Typography>
           <Typography variant="subtitle1" color="background.paper" component="p">
             {description}

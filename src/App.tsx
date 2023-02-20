@@ -11,7 +11,7 @@ export default function App() {
       <ResponsiveAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/GameMaps" element={<GameMaps />} />
+        <Route path="/maps/:name" element={<GameMaps />} />
 
         <Route path="/*" element={<NotFound />} />
       </Routes>
