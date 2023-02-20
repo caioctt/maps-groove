@@ -1,8 +1,9 @@
 import { Card, CardActionArea, CardContent, CardMedia, styled, Typography } from '@mui/material';
 import { Link, LinkProps } from 'react-router-dom';
+import PlaceholderMap from '../../assets/map-placeholder.svg';
 
 type CustomCardProps = {
-  title: string;
+  title?: string;
   img?: string;
   description?: string;
   descriptionFooter?: string;
@@ -39,10 +40,10 @@ export default function CustomCard({
           ? { ...{ disabled, onClick } }
           : { ...{ disabled, component: Link, to: toPath } })}
       >
-        <StyledCardMedia image={img} title={title} />
+        <StyledCardMedia image={img ?? PlaceholderMap} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {title}
+            <strong>{title}</strong>
           </Typography>
           <Typography variant="subtitle1" color="background.paper" component="p">
             {description}

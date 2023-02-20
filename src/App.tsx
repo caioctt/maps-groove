@@ -3,7 +3,8 @@ import { Box } from '@mui/material';
 import Home from './features/Home';
 import NotFound from './pages/NotFound';
 import ResponsiveAppBar from './components/AppBar';
-import GameMaps from './features/GameMaps';
+import TarkovMaps from './features/GameMaps/TarkovMaps';
+import Customs from './features/GameMaps/TarkovMaps/Customs';
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
       <ResponsiveAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/maps/:name" element={<GameMaps />} />
+        <Route path="/maps/tarkov" element={<TarkovMaps />} />
+        <Route path="/maps/tarkov/customs" element={<Customs />} />
 
         <Route path="/*" element={<NotFound />} />
       </Routes>

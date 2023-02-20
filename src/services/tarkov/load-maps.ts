@@ -4,7 +4,7 @@ import tarkov from '.';
 
 // eslint-disable-next-line import/prefer-default-export
 export const loadMaps = {
-  EFT: () => {
+  tarkov: () => {
     const data = request(tarkov.graphqlURL, GRAPHQL_QUERY, {});
     return data;
   },

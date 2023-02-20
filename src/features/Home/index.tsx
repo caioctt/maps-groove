@@ -8,7 +8,7 @@ export default function Home() {
   const GamesCards = React.useMemo(
     () => [
       {
-        key: 'EFT',
+        key: 'tarkov',
         title: 'Escape From Tarkov',
         img: EscapeFromTarkov,
         description: 'Some 3D maps from EFT',
