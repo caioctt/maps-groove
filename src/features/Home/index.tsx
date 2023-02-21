@@ -8,7 +8,7 @@ export default function Home() {
   const GamesCards = React.useMemo(
     () => [
       {
-        key: 0,
+        key: 'tarkov',
         title: 'Escape From Tarkov',
         img: EscapeFromTarkov,
         description: 'Some 3D maps from EFT',
@@ -34,7 +34,7 @@ export default function Home() {
               img={game.img}
               disabled={game.disabled}
               // onClick={() => console.log('clicado')}
-              toPath="/GameMaps"
+              toPath={`/maps/${game.key}`}
             />
           </Grid>
         ))}

@@ -11,7 +11,10 @@ export default function ThemeSwitcher() {
 
   return (
     <Box flexGrow={0}>
-      <Tooltip title={`Switch to ${theme.palette.mode === 'light' ? 'Dark mode' : 'Light mode'}`}>
+      <Tooltip
+        arrow
+        title={`Switch to ${theme.palette.mode === 'light' ? 'Dark mode' : 'Light mode'}`}
+      >
         <IconButton sx={{ ml: 0 }} onClick={colorMode.toggleColorMode} color="inherit" size="small">
           {theme.palette.mode === 'dark' ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
