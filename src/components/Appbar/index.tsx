@@ -21,20 +21,20 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 const StyledAppBar = styled(AppBar)({
   background: 'linear-gradient(to bottom, #1f2c67, #030303)',
   opacity: '0.95',
-  minHeight: '20px',
+  minHeight: '30px',
   display: 'flex',
 });
 
 const StyledContainer = styled(Container)({
-  height: '35px',
-  minHeight: '35px',
+  height: '40px',
+  minHeight: '40px',
   display: 'flex',
   alignItems: 'center',
 });
 
 const StyledToolbar = styled(Toolbar)({
-  height: '35px',
-  minHeight: '20px',
+  height: '40px',
+  minHeight: '40px',
 });
 
 const pages = ['About'];
@@ -76,8 +76,8 @@ export default function ResponsiveAppBar() {
             sx={{
               flexGrow: 1,
               display: { xs: 'flex', md: 'none' },
-              height: '25px',
-              minHeight: '20px',
+              height: '40px',
+              minHeight: '30px',
             }}
           >
             <IconButton

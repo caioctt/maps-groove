@@ -45,7 +45,7 @@ export default function CustomCard({
           <Typography gutterBottom variant="h5" component="div">
             <strong>{title}</strong>
           </Typography>
-          <Typography variant="subtitle1" color="background.paper" component="p">
+          <Typography variant="subtitle1" color="secondary.light" component="p">
             {description}
           </Typography>
           <br />

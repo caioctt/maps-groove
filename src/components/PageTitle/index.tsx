@@ -30,7 +30,9 @@ export default function PageTitle({ title, subtitle, children }: PageTitleProps)
   return (
     <PageTitleWrapper>
       <TitlesWrapper>
-        <Typography variant="h4">{title}</Typography>
+        <Typography variant="h4" fontWeight={700} color="primary.dark">
+          {title}
+        </Typography>
 
         {subtitle && (
           <Typography variant="subtitle2" color="textSecondary">

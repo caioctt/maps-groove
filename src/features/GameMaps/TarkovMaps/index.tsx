@@ -10,7 +10,6 @@ export default function TarkovMaps() {
   useEffect(() => {
     loadMaps.tarkov().then((response: ITarkovMapsModel) => {
       setMaps(response.maps);
-      console.log(response.maps);
     });
   }, []);
 
@@ -18,7 +17,7 @@ export default function TarkovMaps() {
     <Container>
       <PageTitleSection
         title="Maps of Escape from Tarkov"
-        subtitle="Credits of all 3d maps: R3MRa"
+        subtitle="Credits of all 3dMaps: RE3MR"
       />
       <Grid flex={1} container spacing={3} paddingTop={4}>
         {!!maps &&
